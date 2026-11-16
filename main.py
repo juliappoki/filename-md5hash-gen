@@ -1,6 +1,6 @@
 import re
-from pathlib import Path
 import hashlib
+from pathlib import Path
 
 def genHash():
     description = input("Describe your image briefly: ").strip().lower()
@@ -18,7 +18,7 @@ def renameImage(finalName, file_path):
         print("The image has been renamed.")
     except PermissionError:
         print("Insufficient permissions, or the file is open.")
-    except AttributeError:
+    except AttributeError as e:
         print(f"An error has occurred: {e}")
 
 if __name__ == "__main__":
