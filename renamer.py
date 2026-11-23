@@ -22,15 +22,23 @@ def renameImage(finalName, file_path):
         print(f"An error has occurred: {e}")
 
 if __name__ == "__main__":
-    raw_path = input("Enter the image path, or drag and drop it here: ").strip().strip("'").strip('"')
-    file_path = Path(raw_path)
+    while True:
+        raw_path = input("Enter the image path, or drag and drop it here: ").strip().strip("'").strip('"')
+        file_path = Path(raw_path)
 
-    if file_path.exists():
-        finalName = genHash()
-        answer = input(f"Would you like to rename the image to '{finalName}'? [Y/N]: ").strip().lower()
-        if answer in ("y", "yes"):
-                renameImage(finalName, file_path)
-        elif answer in ("n", "no"):
-                print("Process canceled.")
-    else:
-        print("Image/File path not found.")
+        if file_path.exists():
+            finalName = genHash()
+            answerRename = input(f"Would you like to rename the image to '{finalName}'? [Y/N]: ").strip().lower()
+            if answerRename in ("y", "yes"):
+                    renameImage(finalName, file_path)
+            elif answerRename in ("n", "no"):
+                    print("Process canceled.")
+        else:
+            print("Image/File path not found.")
+
+        answerRA = input("Would you like to run again? [Y/N]: ")
+        if answerRA in ("y", "yes"):
+             continue
+        else:
+             print("Bye bye!")
+             break
